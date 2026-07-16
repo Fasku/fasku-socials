@@ -51,6 +51,49 @@ body {
   /* Shrinks to 92% of its size */
 }
 
+.card-line {
+  width: 50%;
+  height: 1px;
+  padding: 0;
+  margin: 0 auto 2rem;
+
+  background-color: rgba(180, 180, 180, 0.65) !important;
+  border: none !important;
+  border-radius: 999px;
+}
+
+.social-link {
+  color: inherit;
+  text-decoration: none;
+}
+
+.social-card-body {
+  display: grid;
+  grid-template-columns: 60px 1fr 60px;
+  align-items: center;
+  padding: 20px;
+}
+
+.social-card-icon {
+  display: flex;
+  justify-content: center;
+}
+
+.social-card-icon img {
+  width: 35px;
+  height: 35px;
+  object-fit: contain;
+}
+
+.social-card-name {
+  text-align: center;
+  font-size: 18px;
+}
+
+.social-card-spacer {
+  width: 60px;
+}
+
 /* ANIMATIONS */
 
 /* TOP ANIMATION */
