@@ -7,6 +7,7 @@ import kenma from '../assets/images/kenma.jpg';
 function Header() {
   const [profilePic, setProfilePic] = useState(fasku);
 
+  // Use for onClick, TODO: refactor prob
   function toggleProfilePic() {
     setProfilePic((currentPicture) =>
       currentPicture === fasku ? kenma : fasku
@@ -16,10 +17,9 @@ function Header() {
   return (
     <Container className="pushdown-overlay">
       <img
-        src={profilePic}
+        src={"https://unavatar.io/tiktok/fasku_"}
         alt="Fasku profile"
         className="rounded-circle mb-3 shadow-lg profile-click-animate"
-        onClick={toggleProfilePic}
         style={{
           cursor: 'pointer',
           width: '200px',

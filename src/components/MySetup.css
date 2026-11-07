@@ -1,0 +1,144 @@
+
+.setup-dropdown {
+  width: 100%;
+  box-sizing: border-box;
+  margin-bottom: 16px;
+
+  background: rgba(28, 24, 58, 0.35);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  border-radius: 12px;
+  overflow: hidden;
+
+  color: white;
+
+  transition:
+    border-color 0.25s ease,
+    transform 0.25s ease;
+}
+
+.setup-dropdown:hover {
+  background: rgba(45, 38, 85, 0.48);
+  border-color: rgba(255, 255, 255, 0.4);
+  transform: translateY(-3px);
+}
+
+.setup-toggle {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 60px minmax(0, 1fr) 60px;
+  align-items: center;
+
+  padding: 14px 20px;
+  background: transparent;
+  border: none;
+  color: white;
+  cursor: pointer;
+  font: inherit;
+}
+
+.setup-toggle:focus-visible {
+  outline: 2px solid #c4b5fd;
+  outline-offset: -3px;
+}
+
+/* Left icon */
+.setup-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 28px;
+}
+
+/* Center text */
+.setup-heading {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3px;
+  min-width: 0;
+}
+
+.setup-title {
+  font-size: 20px;
+  font-weight: 600;
+  line-height: 1.25;
+}
+
+.setup-subtitle {
+  font-size: 12px;
+  font-weight: 400;
+  color: rgba(255, 255, 255, 0.65);
+}
+
+/* Right arrow */
+.setup-arrow-container {
+  width: 34px;
+  height: 34px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  justify-self: center;
+
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 50%;
+}
+
+.setup-arrow {
+  transition: transform 0.3s ease;
+}
+
+.setup-arrow.open {
+  transform: rotate(180deg);
+}
+
+/* Animated dropdown content */
+.setup-content {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 0.3s ease;
+}
+
+.setup-content.open {
+  grid-template-rows: 1fr;
+}
+
+.setup-content-inner {
+  overflow: hidden;
+}
+
+.setup-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 14px 24px;
+
+  border-top: 1px solid rgba(255, 255, 255, 0.12);
+
+  font-size: 14px;
+}
+
+.setup-label {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.setup-value {
+  color: white;
+  font-weight: 500;
+  text-align: right;
+}
+
+@media (max-width: 480px) {
+  .setup-toggle {
+    grid-template-columns: 44px minmax(0, 1fr) 44px;
+    padding: 12px 14px;
+  }
+
+  .setup-title {
+    font-size: 18px;
+  }
+}

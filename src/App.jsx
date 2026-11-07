@@ -6,6 +6,7 @@ import { Container, Stack } from 'react-bootstrap';
 import Header from './components/Header';
 import SocialCard from './components/SocialCard';
 import socialLinks from './data/socialLinks';
+import MySetup from './components/MySetup';
 
 function App() {
   return (
@@ -13,6 +14,8 @@ function App() {
       <div className="card-line" />
 
       <Header />
+
+      <MySetup/>
 
       <Container>
         <Stack>
