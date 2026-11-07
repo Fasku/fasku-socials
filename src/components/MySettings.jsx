@@ -1,9 +1,12 @@
 
-import { useId, useState } from "react";
-import "./MySetup.css";
+import { useId, useRef, useState, useEffect } from "react";
+import { Container } from "react-bootstrap";
+import "./MySettings.css";
 
-export default function MySetup() {
+export default function MySettings() {
   const [isOpen, setIsOpen] = useState(false);
+  const [copied, setCopied] = useState(null);
+  const timeoutRef = useRef(null);
   const contentId = useId();
 
 const settings = [
@@ -13,12 +16,32 @@ const settings = [
     { label: "Mouse", value: "MChose L7 Pro" },
     { label: "Keyboard", value: "Akko Mod 007 V5 HE" },
   ];
+  
+  useEffect(() => {
+    return () => clearTimeout(timeoutRef.current);
+  }, []);
+
+  async function handleCopy(value, label) {
+    try {
+      await navigator.clipboard.writeText(value);
+
+      setCopied(label);
+      clearTimeout(timeoutRef.current);
+
+      timeoutRef.current = setTimeout(() => {
+        setCopied(null);
+      }, 1500);
+    } catch (error) {
+      console.error("Failed to copy:", error);
+    }
+  }
 
   return (
+    <Container className="pushdown-overlay">
     <div className={`setup-dropdown ${isOpen ? "is-open" : ""}`}>
       <button
-        className="setup-toggle"
         type="button"
+        className="setup-toggle"
         onClick={() => setIsOpen(!isOpen)}
         aria-expanded={isOpen}
         aria-controls={contentId}
@@ -35,35 +58,42 @@ const settings = [
         </span>
 
         <span className="setup-arrow-container">
-          <svg
+          <span
             className={`setup-arrow ${isOpen ? "open" : ""}`}
-            width="18"
-            height="18"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth="2"
             aria-hidden="true"
           >
-            <path d="m6 9 6 6 6-6" />
-          </svg>
+            ▼
+          </span>
         </span>
       </button>
 
       <div
         id={contentId}
         className={`setup-content ${isOpen ? "open" : ""}`}
-        aria-hidden={!isOpen}
+        inert={!isOpen}
       >
         <div className="setup-content-inner">
           {settings.map(({ label, value }) => (
-            <div className="setup-row" key={label}>
+            <button
+              key={label}
+              type="button"
+              className="setup-row"
+              onClick={() => handleCopy(value, label)}
+              title={`Copy ${value}`}
+            >
               <span className="setup-label">{label}</span>
-              <span className="setup-value">{value}</span>
-            </div>
+
+              <span className="setup-value">
+                {value}
+                <span className="setup-copy-status" aria-live="polite">
+                  {copied === label ? " ✓ Copied!" : ""}
+                </span>
+              </span>
+            </button>
           ))}
         </div>
       </div>
     </div>
+    </Container>
   );
 }

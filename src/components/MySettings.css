@@ -1,101 +1,111 @@
 
+/* MAIN CARD */
 .setup-dropdown {
-  width: 100%;
+  width: auto;
   box-sizing: border-box;
-  margin-bottom: 16px;
+  margin: 0 24px 16px;
 
-  background: rgba(28, 24, 58, 0.35);
+  background: rgba(28, 24, 58, 0.45);
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
 
   border: 1px solid rgba(255, 255, 255, 0.22);
-  border-radius: 12px;
+  border-radius: 16px;
   overflow: hidden;
-
   color: white;
 
   transition:
-    border-color 0.25s ease,
-    transform 0.25s ease;
+    border-color 0.25s ease;
 }
 
 .setup-dropdown:hover {
-  background: rgba(45, 38, 85, 0.48);
-  border-color: rgba(255, 255, 255, 0.4);
-  transform: translateY(-3px);
+  background: rgba(45, 38, 85, 0.55);
+  border-color: rgba(255, 255, 255, 0.35);
 }
 
-.setup-toggle {
+/* HEADER BUTTON */
+.setup-dropdown .setup-toggle {
   width: 100%;
+  min-height: 75px;
+  box-sizing: border-box;
+
   display: grid;
   grid-template-columns: 60px minmax(0, 1fr) 60px;
   align-items: center;
 
-  padding: 14px 20px;
+  padding: 12px 20px;
+
   background: transparent;
   border: none;
+  border-radius: 0;
   color: white;
-  cursor: pointer;
   font: inherit;
+  cursor: pointer;
+  appearance: none;
 }
 
-.setup-toggle:focus-visible {
+.setup-toggle:focus-visible,
+.setup-row:focus-visible {
   outline: 2px solid #c4b5fd;
   outline-offset: -3px;
 }
 
-/* Left icon */
+/* GAMEPAD ICON */
 .setup-icon {
   display: flex;
-  align-items: center;
   justify-content: center;
+  align-items: center;
   font-size: 28px;
 }
 
-/* Center text */
+/* TITLE */
 .setup-heading {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 3px;
-  min-width: 0;
+  justify-content: center;
+  gap: 2px;
 }
 
 .setup-title {
+  color: white;
   font-size: 20px;
   font-weight: 600;
-  line-height: 1.25;
+  line-height: 1.3;
 }
 
 .setup-subtitle {
-  font-size: 12px;
-  font-weight: 400;
   color: rgba(255, 255, 255, 0.65);
+  font-size: 12px;
+  line-height: 1.4;
 }
 
-/* Right arrow */
+/* ARROW */
 .setup-arrow-container {
-  width: 34px;
-  height: 34px;
   display: flex;
-  justify-content: center;
   align-items: center;
+  justify-content: center;
   justify-self: center;
 
-  background: rgba(255, 255, 255, 0.1);
-  border: 1px solid rgba(255, 255, 255, 0.12);
+  width: 34px;
+  height: 34px;
   border-radius: 50%;
+
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.15);
 }
 
 .setup-arrow {
-  transition: transform 0.3s ease;
+  display: inline-block;
+  font-size: 12px;
+  transition: transform 0.25s ease;
 }
 
 .setup-arrow.open {
   transform: rotate(180deg);
 }
 
-/* Animated dropdown content */
+/* EXPAND/COLLAPSE */
 .setup-content {
   display: grid;
   grid-template-rows: 0fr;
@@ -110,18 +120,34 @@
   overflow: hidden;
 }
 
-.setup-row {
+/* CLICKABLE SETTINGS */
+.setup-dropdown .setup-row {
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 16px;
-  padding: 14px 24px;
 
+  width: 100%;
+  box-sizing: border-box;
+  padding: 14px 20px;
+
+  background: transparent;
+  border: none;
   border-top: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 0;
 
+  color: white;
+  font: inherit;
   font-size: 14px;
+  text-align: left;
+  cursor: pointer;
 }
 
+.setup-dropdown .setup-row:hover {
+  background: rgba(255, 255, 255, 0.08);
+}
+
+/* SETTING TEXT */
 .setup-label {
   color: rgba(255, 255, 255, 0.7);
 }
@@ -132,10 +158,22 @@
   text-align: right;
 }
 
+/* COPIED MESSAGE */
+.setup-copy-status {
+  color: #a7f3d0;
+  font-size: 12px;
+}
+
+/* MOBILE */
 @media (max-width: 480px) {
-  .setup-toggle {
+  .setup-dropdown {
+    margin-left: 8px;
+    margin-right: 8px;
+  }
+
+  .setup-dropdown .setup-toggle {
     grid-template-columns: 44px minmax(0, 1fr) 44px;
-    padding: 12px 14px;
+    padding: 10px 12px;
   }
 
   .setup-title {

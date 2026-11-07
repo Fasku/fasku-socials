@@ -6,7 +6,7 @@ import { Container, Stack } from 'react-bootstrap';
 import Header from './components/Header';
 import SocialCard from './components/SocialCard';
 import socialLinks from './data/socialLinks';
-import MySetup from './components/MySetup';
+import MySettings from './components/MySettings';
 
 function App() {
   return (
@@ -15,7 +15,7 @@ function App() {
 
       <Header />
 
-      <MySetup/>
+      <MySettings/>
 
       <Container>
         <Stack>
