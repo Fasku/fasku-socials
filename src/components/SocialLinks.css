@@ -1,0 +1,70 @@
+.social-links-list {
+  display: grid;
+  gap: 8px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.social-links-list > li {
+  min-width: 0;
+}
+
+.social-links--icons {
+  container-type: inline-size;
+}
+
+.social-links--icons .social-links-list {
+  --social-columns: 3;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+}
+
+.social-links--icons .social-links-list > li {
+  /* Equal-width tiles keep incomplete rows centered without stretching them. */
+  flex: 0 0 calc((100% - (var(--social-columns) - 1) * 10px) / var(--social-columns));
+}
+
+@container (max-width: 19.25rem) {
+  .social-links--icons .social-links-list {
+    --social-columns: 2;
+  }
+}
+
+@container (min-width: 26rem) {
+  .social-links--icons .social-links-list {
+    --social-columns: 4;
+  }
+}
+
+@container (min-width: 32.5rem) {
+  .social-links--icons .social-links-list {
+    --social-columns: 5;
+  }
+}
+
+.social-link--icon .social-card-body {
+  position: relative;
+  display: flex;
+  min-height: 100px;
+  flex-direction: column;
+  justify-content: center;
+  gap: 12px;
+  padding: 16px 6px;
+}
+
+.social-link--icon .social-card-name {
+  max-width: 100%;
+  font-size: 12px;
+  line-height: 1.4;
+  white-space: nowrap;
+}
+
+.social-link--icon .social-card-arrow {
+  position: absolute;
+  top: 4px;
+  right: 8px;
+  font-size: 12px;
+}

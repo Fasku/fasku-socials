@@ -6,7 +6,7 @@ import { playSound } from '../utils/audio';
 import wiiClick from '../assets/sounds/wii-click.mp3';
 import wiiHover from '../assets/sounds/wii-hover.wav';
 
-function SocialCard({ link, index, soundEnabled }) {
+function SocialCard({ link, index, soundEnabled, layout = 'cards' }) {
   const isInternal = link.url.startsWith('/');
 
   function handleClick() {
@@ -22,7 +22,7 @@ function SocialCard({ link, index, soundEnabled }) {
       href={link.url}
       target={isInternal ? undefined : '_blank'}
       rel={isInternal ? undefined : 'noopener noreferrer'}
-      className="social-link"
+      className={`social-link${layout === 'icons' ? ' social-link--icon' : ''}`}
       aria-label={isInternal ? link.name : `${link.name} (opens in a new tab)`}
       onClick={handleClick}
       onMouseEnter={handleHover}
@@ -33,7 +33,7 @@ function SocialCard({ link, index, soundEnabled }) {
         style={{ '--delay': index }}
       >
         <Card
-          className="social-card mb-2"
+          className="social-card"
         >
           <Card.Body className="social-card-body">
             <div className="social-card-icon">

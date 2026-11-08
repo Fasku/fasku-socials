@@ -43,3 +43,7 @@ This site is designed to be hosted on platforms like **Vercel** or **Netlify**.
 ## Changing the My Setup icon
 
 Edit `src/data/setup.js` to change the icon without touching the component. For an image or GIF, place the file in `public/icons/` and set `setupIcon.src` to `/icons/your-file.gif`. You can replace that file later to update the icon again. `size` controls its width and height in pixels. Set `src` to `null` to show the configured `emoji` instead.
+
+## Social links layout
+
+Social links use a compact icon grid with visible names. To restore the original full-width cards, change `socialLinksLayout` in `src/data/site.js` from `'icons'` to `'cards'`. Both layouts use the same links, sound controls, and keyboard focus styles. External links open in a new tab; Osu Skins opens in the same tab. The grid automatically fits as many columns as space allows, keeping labels on one line and using fewer columns on narrow phones. Add links in `src/data/socialLinks.js`.
