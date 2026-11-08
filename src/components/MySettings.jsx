@@ -6,7 +6,7 @@ import './MySettings.css';
 const settings = [
   { label: "Mouse DPI", value: "1600" },
   { label: "OSU! Sens", value: "0.5" },
-  { label: "Valorant Sens", value: "0.25" },
+  { label: "Valorant Sens", value: "0.157" },
   { label: "Mouse", value: "MChose L7 Pro" },
   { label: "Keyboard", value: "Akko Mod 007 V5 HE" },
 ];

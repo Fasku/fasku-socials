@@ -1,17 +1,17 @@
 #root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
+  width: 100%;
+  max-width: 560px;
+  margin: auto;
+  padding: 48px 16px;
   text-align: center;
 }
 
-.card-line {
-  width: 50%;
-  height: 1px;
-  padding: 0;
-  margin: 0 auto 2rem;
+.profile-page > .container {
+  padding-inline: 0;
+}
 
-  background-color: rgba(180, 180, 180, 0.65) !important;
-  border: none !important;
-  border-radius: 999px;
+@media (max-width: 480px) {
+  #root {
+    padding: 32px 20px;
+  }
 }

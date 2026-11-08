@@ -14,13 +14,13 @@ function playSound(sound, volume = 1) {
   });
 }
 
-function SocialCard({ link, index }) {
+function SocialCard({ link, index, soundEnabled }) {
   function handleClick() {
-    playSound(wiiClick, 0.5);
+    if (soundEnabled) playSound(wiiClick, 0.5);
   }
 
   function handleHover() {
-    playSound(wiiHover, 1);
+    if (soundEnabled) playSound(wiiHover, 0.35);
   }
 
   return (
@@ -29,6 +29,10 @@ function SocialCard({ link, index }) {
       target="_blank"
       rel="noopener noreferrer"
       className="social-link"
+      aria-label={`${link.name} (opens in a new tab)`}
+      onClick={handleClick}
+      onMouseEnter={handleHover}
+      onFocus={handleHover}
     >
       <div
         className="social-card-entrance"
@@ -36,14 +40,12 @@ function SocialCard({ link, index }) {
       >
         <Card
           className="social-card mb-2"
-          onMouseEnter={handleHover}
-          onClick={handleClick}
         >
           <Card.Body className="social-card-body">
             <div className="social-card-icon">
               <img
                 src={link.icon}
-                alt={`${link.name} icon`}
+                alt=""
               />
             </div>
 
@@ -51,7 +53,7 @@ function SocialCard({ link, index }) {
               {link.name}
             </span>
 
-            <div className="social-card-spacer" />
+            <span className="social-card-arrow" aria-hidden="true">↗</span>
           </Card.Body>
         </Card>
       </div>

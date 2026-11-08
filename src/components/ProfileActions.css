@@ -1,0 +1,40 @@
+.profile-actions {
+  margin-bottom: 8px;
+}
+
+.profile-action-buttons {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.profile-action {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  min-height: 44px;
+  padding: 8px 14px;
+  border: 1px solid var(--glass-border);
+  border-radius: 999px;
+  background: var(--glass-background);
+  color: rgba(255, 255, 255, 0.85);
+  font: inherit;
+  font-size: 13px;
+  cursor: pointer;
+  transition: background-color 0.18s ease;
+}
+
+.profile-action:hover,
+.profile-action[aria-pressed='true'] {
+  background: var(--glass-hover);
+  color: #fff;
+}
+
+.profile-action-status {
+  min-height: 20px;
+  margin: 6px 0 0;
+  color: #d4c5ff;
+  font-size: 12px;
+}

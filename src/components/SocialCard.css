@@ -1,13 +1,15 @@
 .social-link {
   color: inherit;
   text-decoration: none;
+  display: block;
+  border-radius: var(--glass-radius);
 }
 
 .social-card-body {
   display: grid;
-  grid-template-columns: 60px 1fr 60px;
+  grid-template-columns: 40px minmax(0, 1fr) 40px;
   align-items: center;
-  padding: 20px;
+  padding: 18px 20px;
 }
 
 .social-card-icon {
@@ -16,36 +18,43 @@
 }
 
 .social-card-icon img {
-  width: 35px;
-  height: 35px;
+  width: 28px;
+  height: 28px;
   object-fit: contain;
+  filter: brightness(0) invert(1);
 }
 
 .social-card-name {
   text-align: center;
-  font-size: 18px;
+  font-size: 16px;
 }
 
-.social-card-spacer {
-  width: 60px;
+.social-card-arrow {
+  color: rgba(255, 255, 255, 0.55);
+  font-size: 20px;
 }
 
 .social-card {
-  transition: transform 0.2s ease;
-  background-color: rgba(255, 255, 255, 0.159) !important;
-  filter: invert(1);
-  transform: translateY(-5px);
+  color: #fff;
+  background: var(--glass-background);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--glass-radius);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  transition: transform 0.18s ease, background-color 0.18s ease, border-color 0.18s ease;
 }
 
-.social-card:hover {
-  transform: translateY(-7px);
-  background-color: #f8f9fa;
+.social-link:hover .social-card,
+.social-link:focus-visible .social-card {
+  transform: translateY(-2px);
+  background: var(--glass-hover);
+  border-color: rgba(255, 255, 255, 0.4);
 }
 
 @keyframes fadeInUp {
   from {
     opacity: 0;
-    transform: translateY(20px);
+    transform: translateY(8px);
   }
 
   to {
@@ -56,7 +65,7 @@
 
 .social-card-entrance {
   opacity: 0;
-  animation: fadeInUp 0.6s ease-out forwards;
+  animation: fadeInUp 0.3s ease-out forwards;
 
-  animation-delay: calc(0.6s + (var(--delay) * 0.32s));
+  animation-delay: calc(0.1s + (var(--delay) * 0.06s));
 }
