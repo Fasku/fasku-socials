@@ -1,6 +1,8 @@
 import { useEffect, useId, useRef, useState } from 'react';
 import { Container } from 'react-bootstrap';
 
+import { setupIcon } from '../data/setup';
+
 import './MySettings.css';
 
 const settings = [
@@ -46,8 +48,16 @@ export default function MySettings() {
           aria-expanded={isOpen}
           aria-controls={contentId}
         >
-          <span className="setup-icon" aria-hidden="true">
-            🎮
+          <span
+            className="setup-icon"
+            aria-hidden="true"
+            style={{ '--setup-icon-size': `${setupIcon.size}px` }}
+          >
+            {setupIcon.src ? (
+              <img src={setupIcon.src} alt="" />
+            ) : (
+              setupIcon.emoji
+            )}
           </span>
 
           <span className="setup-heading">

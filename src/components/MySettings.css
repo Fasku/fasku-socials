@@ -50,12 +50,21 @@
   outline-offset: -3px;
 }
 
-/* GAMEPAD ICON */
+/* CONFIGURABLE SETUP ICON */
 .setup-icon {
   display: flex;
   justify-content: center;
   align-items: center;
-  font-size: 28px;
+  font-size: var(--setup-icon-size);
+  line-height: 1;
+}
+
+.setup-icon img {
+  display: block;
+  width: var(--setup-icon-size);
+  height: var(--setup-icon-size);
+  max-width: 100%;
+  object-fit: contain;
 }
 
 /* TITLE */

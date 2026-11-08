@@ -39,3 +39,7 @@ This site is designed to be hosted on platforms like **Vercel** or **Netlify**.
 
 ---
 *Created by [Fasku](https://github.com/fasku1)*
+
+## Changing the My Setup icon
+
+Edit `src/data/setup.js` to change the icon without touching the component. For an image or GIF, place the file in `public/icons/` and set `setupIcon.src` to `/icons/your-file.gif`. You can replace that file later to update the icon again. `size` controls its width and height in pixels. Set `src` to `null` to show the configured `emoji` instead.
