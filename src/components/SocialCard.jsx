@@ -1,20 +1,14 @@
 import { Card } from 'react-bootstrap';
 
 import './SocialCard.css';
+import { playSound } from '../utils/audio';
 
 import wiiClick from '../assets/sounds/wii-click.mp3';
 import wiiHover from '../assets/sounds/wii-hover.wav';
 
-function playSound(sound, volume = 1) {
-  const audio = new Audio(sound);
-  audio.volume = volume;
-
-  audio.play().catch((error) => {
-    console.error('Could not play sound:', error);
-  });
-}
-
 function SocialCard({ link, index, soundEnabled }) {
+  const isInternal = link.url.startsWith('/');
+
   function handleClick() {
     if (soundEnabled) playSound(wiiClick, 0.5);
   }
@@ -26,10 +20,10 @@ function SocialCard({ link, index, soundEnabled }) {
   return (
     <a
       href={link.url}
-      target="_blank"
-      rel="noopener noreferrer"
+      target={isInternal ? undefined : '_blank'}
+      rel={isInternal ? undefined : 'noopener noreferrer'}
       className="social-link"
-      aria-label={`${link.name} (opens in a new tab)`}
+      aria-label={isInternal ? link.name : `${link.name} (opens in a new tab)`}
       onClick={handleClick}
       onMouseEnter={handleHover}
       onFocus={handleHover}
@@ -53,7 +47,7 @@ function SocialCard({ link, index, soundEnabled }) {
               {link.name}
             </span>
 
-            <span className="social-card-arrow" aria-hidden="true">↗</span>
+            <span className="social-card-arrow" aria-hidden="true">{isInternal ? '→' : '↗'}</span>
           </Card.Body>
         </Card>
       </div>

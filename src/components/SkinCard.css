@@ -1,0 +1,82 @@
+.skin-card {
+  min-width: 0;
+  padding: 8px;
+  overflow: hidden;
+  color: #fff;
+  background: var(--glass-background);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--glass-radius);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  transition: border-color 0.18s ease;
+}
+
+.skin-card:hover,
+.skin-card:focus-within {
+  border-color: rgba(255, 255, 255, 0.4);
+}
+
+.skin-image-link {
+  display: block;
+  border-radius: 10px;
+  text-decoration: none;
+}
+
+.skin-image-link:focus-visible {
+  outline-offset: -4px;
+}
+
+.skin-img,
+.skin-placeholder {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  border-radius: 10px;
+}
+
+.skin-img {
+  display: block;
+  object-fit: cover;
+}
+
+.skin-placeholder {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+  color: rgba(255, 255, 255, 0.7);
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px dashed var(--glass-border);
+}
+
+.skin-placeholder p {
+  margin: 8px 0 0;
+  font-size: 13px;
+}
+
+.skin-name {
+  margin: 0 0 12px;
+  font-size: 18px;
+}
+
+.skin-download-link {
+  display: inline-block;
+  padding: 10px 16px;
+  color: #e1d6ff;
+  background: rgba(196, 181, 253, 0.12);
+  border: 1px solid rgba(196, 181, 253, 0.25);
+  border-radius: 999px;
+  font-size: 14px;
+  text-decoration: none;
+}
+
+.skin-download-link:hover {
+  color: #fff;
+  background: rgba(196, 181, 253, 0.22);
+}
+
+.skin-card .carousel-control-prev:focus-visible,
+.skin-card .carousel-control-next:focus-visible,
+.skin-card .carousel-indicators button:focus-visible {
+  outline-offset: -4px;
+}

@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from 'react';
 
 import './ProfileActions.css';
 
-function ProfileActions({ soundEnabled, onToggleSound }) {
+function ProfileActions({ soundEnabled, onToggleSound, shareTitle = '@Fasku', shareName = 'profile' }) {
   const [status, setStatus] = useState('');
   const timeoutRef = useRef(null);
 
@@ -21,8 +21,8 @@ function ProfileActions({ soundEnabled, onToggleSound }) {
 
     if (navigator.share) {
       try {
-        await navigator.share({ title: '@Fasku', url: url.href });
-        showStatus('Profile shared!');
+        await navigator.share({ title: shareTitle, url: url.href });
+        showStatus(`${shareName} shared!`);
         return;
       } catch (error) {
         if (error.name === 'AbortError') return;
@@ -31,7 +31,7 @@ function ProfileActions({ soundEnabled, onToggleSound }) {
 
     try {
       await navigator.clipboard.writeText(url.href);
-      showStatus('Profile link copied!');
+      showStatus(`${shareName} link copied!`);
     } catch {
       showStatus('Could not copy the link. You can copy it from your address bar.');
     }
@@ -51,7 +51,7 @@ function ProfileActions({ soundEnabled, onToggleSound }) {
         </button>
         <button className="profile-action" type="button" onClick={shareProfile}>
           <span aria-hidden="true">↗</span>
-          Share profile
+          Share {shareName}
         </button>
       </div>
       <p className="profile-action-status" role="status">{status}</p>

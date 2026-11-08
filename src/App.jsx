@@ -1,16 +1,17 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
+import HomePage from './pages/HomePage';
+import SkinsPage from './pages/SkinsPage';
 import './App.css';
 
-import { Container, Stack } from 'react-bootstrap';
-
-import ProfileActions from './components/ProfileActions';
-import Header from './components/Header';
-import SocialCard from './components/SocialCard';
-import socialLinks from './data/socialLinks';
-import MySettings from './components/MySettings';
-
 function App() {
+  // Native links handle navigation, including browser back/forward and new tabs.
+  const isSkinsPage = window.location.pathname.replace(/\/$/, '') === '/skins';
+
+  useEffect(() => {
+    document.title = isSkinsPage ? 'Fasku | osu! Skins' : 'F a s k u';
+  }, [isSkinsPage]);
+
   const [soundEnabled, setSoundEnabled] = useState(() => {
     try {
       return localStorage.getItem('fasku-sound-enabled') === 'true';
@@ -29,28 +30,9 @@ function App() {
     }
   }
 
-  return (
-    <main className="profile-page">
-      <Header />
+  const Page = isSkinsPage ? SkinsPage : HomePage;
 
-      <ProfileActions soundEnabled={soundEnabled} onToggleSound={toggleSound} />
-
-      <MySettings />
-
-      <Container as="nav" aria-label="Social links">
-        <Stack>
-          {socialLinks.map((link, index) => (
-            <SocialCard
-              key={link.name}
-              link={link}
-              index={index}
-              soundEnabled={soundEnabled}
-            />
-          ))}
-        </Stack>
-      </Container>
-    </main>
-  );
+  return <Page soundEnabled={soundEnabled} onToggleSound={toggleSound} />;
 }
 
 export default App;

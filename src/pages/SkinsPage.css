@@ -1,0 +1,54 @@
+.skins-page {
+  color: #fff;
+}
+
+.skins-navigation {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 32px;
+}
+
+.skins-navigation a {
+  padding-block: 10px;
+  color: rgba(255, 255, 255, 0.8);
+  text-decoration: none;
+  font-size: 14px;
+}
+
+.skins-navigation a:hover {
+  color: #fff;
+}
+
+.skins-header img {
+  object-fit: cover;
+  border: 2px solid var(--glass-border);
+  border-radius: 24px;
+  margin-bottom: 20px;
+}
+
+.skins-header h1 {
+  font-size: clamp(28px, 5vw, 40px);
+  font-weight: 700;
+  letter-spacing: -1px;
+}
+
+.skins-header p {
+  max-width: 420px;
+  margin: 12px auto 24px;
+  color: rgba(255, 255, 255, 0.75);
+}
+
+.skins-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 20px;
+  text-align: center;
+}
+
+@media (max-width: 700px) {
+  .skins-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
