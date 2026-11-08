@@ -1,5 +1,7 @@
 import { Card } from 'react-bootstrap';
 
+import './SocialCard.css';
+
 import wiiClick from '../assets/sounds/wii-click.mp3';
 import wiiHover from '../assets/sounds/wii-hover.wav';
 
@@ -29,11 +31,11 @@ function SocialCard({ link, index }) {
       className="social-link"
     >
       <div
-        className="stagger-item"
+        className="social-card-entrance"
         style={{ '--delay': index }}
       >
         <Card
-          className="card mb-2"
+          className="social-card mb-2"
           onMouseEnter={handleHover}
           onClick={handleClick}
         >

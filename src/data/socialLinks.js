@@ -10,7 +10,7 @@ const socialLinks = [
     url: 'https://www.discord.gg/NkGs8ht',
     icon: discord,
   },
-    {
+  {
     name: 'Skins',
     url: 'https://fasku-osu-skins.vercel.app',
     icon: osu,

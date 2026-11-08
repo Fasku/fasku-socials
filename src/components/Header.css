@@ -1,0 +1,23 @@
+.profile-header {
+  color: #ffffff;
+}
+
+.profile-image {
+  width: 200px;
+  height: 200px;
+  object-fit: cover;
+  cursor: pointer;
+  transition: transform 0.1s ease-in-out;
+}
+
+.profile-image:active {
+  transform: scale(0.92);
+}
+
+.profile-title {
+  font-size: 30px;
+}
+
+.profile-description {
+  font-size: 18px;
+}

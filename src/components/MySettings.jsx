@@ -1,7 +1,15 @@
+import { useEffect, useId, useRef, useState } from 'react';
+import { Container } from 'react-bootstrap';
 
-import { useId, useRef, useState, useEffect } from "react";
-import { Container } from "react-bootstrap";
-import "./MySettings.css";
+import './MySettings.css';
+
+const settings = [
+  { label: "Mouse DPI", value: "1600" },
+  { label: "OSU! Sens", value: "0.5" },
+  { label: "Valorant Sens", value: "0.25" },
+  { label: "Mouse", value: "MChose L7 Pro" },
+  { label: "Keyboard", value: "Akko Mod 007 V5 HE" },
+];
 
 export default function MySettings() {
   const [isOpen, setIsOpen] = useState(false);
@@ -9,14 +17,6 @@ export default function MySettings() {
   const timeoutRef = useRef(null);
   const contentId = useId();
 
-const settings = [
-    { label: "Mouse DPI", value: "1600" },
-    { label: "OSU! Sens", value: "0.5" },
-    { label: "Valorant Sens", value: "0.25" },
-    { label: "Mouse", value: "MChose L7 Pro" },
-    { label: "Keyboard", value: "Akko Mod 007 V5 HE" },
-  ];
-  
   useEffect(() => {
     return () => clearTimeout(timeoutRef.current);
   }, []);
@@ -38,62 +38,62 @@ const settings = [
 
   return (
     <Container className="pushdown-overlay">
-    <div className={`setup-dropdown ${isOpen ? "is-open" : ""}`}>
-      <button
-        type="button"
-        className="setup-toggle"
-        onClick={() => setIsOpen(!isOpen)}
-        aria-expanded={isOpen}
-        aria-controls={contentId}
-      >
-        <span className="setup-icon" aria-hidden="true">
-          🎮
-        </span>
-
-        <span className="setup-heading">
-          <span className="setup-title">My Setup</span>
-          <span className="setup-subtitle">
-            Sensitivity & Gear
+      <div className="setup-dropdown">
+        <button
+          type="button"
+          className="setup-toggle"
+          onClick={() => setIsOpen((open) => !open)}
+          aria-expanded={isOpen}
+          aria-controls={contentId}
+        >
+          <span className="setup-icon" aria-hidden="true">
+            🎮
           </span>
-        </span>
 
-        <span className="setup-arrow-container">
-          <span
-            className={`setup-arrow ${isOpen ? "open" : ""}`}
-            aria-hidden="true"
-          >
-            ▼
+          <span className="setup-heading">
+            <span className="setup-title">My Setup</span>
+            <span className="setup-subtitle">
+              Sensitivity & Gear
+            </span>
           </span>
-        </span>
-      </button>
 
-      <div
-        id={contentId}
-        className={`setup-content ${isOpen ? "open" : ""}`}
-        inert={!isOpen}
-      >
-        <div className="setup-content-inner">
-          {settings.map(({ label, value }) => (
-            <button
-              key={label}
-              type="button"
-              className="setup-row"
-              onClick={() => handleCopy(value, label)}
-              title={`Copy ${value}`}
+          <span className="setup-arrow-container">
+            <span
+              className={`setup-arrow ${isOpen ? "open" : ""}`}
+              aria-hidden="true"
             >
-              <span className="setup-label">{label}</span>
+              ▼
+            </span>
+          </span>
+        </button>
 
-              <span className="setup-value">
-                {value}
-                <span className="setup-copy-status" aria-live="polite">
-                  {copied === label ? " ✓ Copied!" : ""}
+        <div
+          id={contentId}
+          className={`setup-content ${isOpen ? "open" : ""}`}
+          inert={!isOpen}
+        >
+          <div className="setup-content-inner">
+            {settings.map(({ label, value }) => (
+              <button
+                key={label}
+                type="button"
+                className="setup-row"
+                onClick={() => handleCopy(value, label)}
+                title={`Copy ${value}`}
+              >
+                <span className="setup-label">{label}</span>
+
+                <span className="setup-value">
+                  {value}
+                  <span className="setup-copy-status" aria-live="polite">
+                    {copied === label ? " ✓ Copied!" : ""}
+                  </span>
                 </span>
-              </span>
-            </button>
-          ))}
+              </button>
+            ))}
+          </div>
         </div>
       </div>
-    </div>
     </Container>
   );
 }

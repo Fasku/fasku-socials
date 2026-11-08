@@ -1,4 +1,3 @@
-import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
 
 import { Container, Stack } from 'react-bootstrap';
@@ -15,7 +14,7 @@ function App() {
 
       <Header />
 
-      <MySettings/>
+      <MySettings />
 
       <Container>
         <Stack>
